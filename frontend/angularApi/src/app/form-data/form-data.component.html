@@ -1,0 +1,88 @@
+<section class="section">
+    <div class="main">
+        <div class="header">
+            <h2>Student personal Details</h2>
+        </div>
+        <div class="form">
+            <form action="" [formGroup]="registrationform" (ngSubmit)=onsubmit()>
+                <div  class="image-div">
+                    <mat-card>
+                        <p>Please chose your image</p>
+                        <div fxLayout="row" fxLayoutAlign="space-around center" >
+                            <div>
+                              <input type='file' (change)="onSelectFile($event)" formControlName='image'>
+                            </div>
+                            <div>
+                              <img [src]="url" height="100" > <br/>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+                <div  fxLayout="row" fxLayoutAlign="space-between center" >
+                        <mat-form-field appearance="outline">
+                          <mat-label>First Name</mat-label>
+                          <input type="text" onkeypress= "return /[a-z]/i.test(event.key)" matInput placeholder="Enter your first name" formControlName="firstname" required>
+                          <mat-error *ngIf="firstname?.hasError('required')">please enter your first name</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                          <mat-label>Last Name</mat-label>
+                          <input type="text" onkeypress="return /[a-z]/i.test(event.key)" matInput placeholder="Enter your last name" formControlName="lastname" required>
+                          <mat-error *ngIf="lastname?.hasError('required')">please enter your last name</mat-error>
+                        </mat-form-field>
+                </div>
+                <div class="example-container" >
+                    <mat-form-field appearance="fill" fxFill>
+                      <mat-label>Enter your email</mat-label>
+                      <input type="email" matInput placeholder="abc@xyz.com" formControlName="email"  required>
+                      <mat-error *ngIf="email?.hasError('required')">please enter your email id</mat-error>
+                      <mat-error *ngIf="email?.hasError('email')">please enter valid email id</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFill >
+                        <mat-label>Enter your Phone Number</mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" onkeypress="return /[0-9]/i.test(event.key)" matInput placeholder="" formControlName=phone maxlength="10"   required>
+                        <mat-error *ngIf="phone?.hasError('required')">please enter your phone number</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label >Roll Number</mat-label>
+                        <input matInput type="number" placeholder="enter your roll number" formControlName=roll required>
+                        <mat-error *ngIf="roll?.hasError('required')">please enter your roll number</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Class</mat-label>
+                        <select matNativeControl formControlName=clAss required>
+                        <option *ngFor='let drop of dropdown' value="{{drop.clAss}}">{{drop.clAss|titlecase}}</option>
+                        </select>
+                        <mat-error *ngIf="clAss?.hasError('required')">please enter your class</mat-error>
+                      </mat-form-field>
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <mat-card fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxLayoutGap="50px">
+                        <label class="example-margin">Vagetarian :</label>
+                        </div>
+                        <mat-radio-group fxLayoutGap="120px" formControlName=vagetarian >
+                          <mat-radio-button value="{{vag.value|lowercase}}" color="primary" *ngFor='let vag of veg'>{{vag.value}}</mat-radio-button>
+                        </mat-radio-group>
+                    </mat-card>
+                </div>
+                <div>
+                    <p>
+                        <mat-form-field appearance="outline" fxFill>
+                          <mat-label>Hobby</mat-label>
+                          <input type="text" matInput placeholder="Enter your hobby" formControlName=hobby>
+                        </mat-form-field>
+                    </p>
+                </div>
+                <div >
+                    <button [disabled]="registrationform.invalid"  mat-raised-button  color="primary" type="submit"  fxFill>Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+<ng-http-loader>loading</ng-http-loader>

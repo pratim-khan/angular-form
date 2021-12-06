@@ -1,0 +1,31 @@
+.section{
+    padding: 10px 400px;
+}
+.main{
+    border: 1px solid black;
+    border-radius:5px ;
+}
+.header{
+    background-color: #3f51b5 ; 
+    border-radius: 5px 5px 0px 0px; 
+    text-align: center;
+}
+.header h2{
+    color: white; 
+    margin: 0px;
+}
+.form{
+    text-align: center; 
+    padding: 20px; 
+    background-color: white;
+}
+p{
+    margin: 0px;
+}
+.image-div{
+    margin-bottom: 16px;
+}
+.image-div img{
+    width: 100px; 
+    object-fit: contain;
+}
